@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Société Textile Moderne</title>
+    <style>
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #444;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #555;
+            transform: translateY(-5px);
+        }
+
+        /* Sections communes */
+        section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Hero */
+        #accueil {
+            background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #accueil h2 {
+            font-size: 2.5rem;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        #accueil p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* Section Produits */
+        #produits .produits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .produit {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .produit:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .produit img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .produit h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .produit p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Section Les Plus Demandés */
+        #plus-demandes .produits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        #plus-demandes .produit {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #plus-demandes .produit:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        #plus-demandes .produit img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        #plus-demandes .produit h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        #plus-demandes .produit p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Section Ajouter un Produit */
+        #ajouter-produit form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #ajouter-produit label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #ajouter-produit input, #ajouter-produit textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #ajouter-produit button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #ajouter-produit button:hover {
+            background: #555;
+        }
+
+        /* Section Contact */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #contact label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #contact input, #contact textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #contact button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #contact button:hover {
+            background: #555;
+        }
+
+        /* Section Commentaires */
+        #commentaires .commentaires-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .commentaire {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .commentaire:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .commentaire p {
+            font-style: italic;
+            color: #666;
+        }
+
+        .commentaire span {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: slideInUp 0.5s ease-in-out;
+        }
+
+        .chatbot-header {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chatbot-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .chatbot-message {
+            margin-bottom: 10px;
+        }
+
+        .chatbot-message.user {
+            text-align: right;
+        }
+
+        .chatbot-message.bot {
+            text-align: left;
+        }
+
+        .chatbot-message p {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .chatbot-message.user p {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .chatbot-message.bot p {
+            background: #f1f1f1;
+            color: #333;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chatbot-input button {
+            padding: 8px 12px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chatbot-input button:hover {
+            background: #555;
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .chatbot-container {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Société Textile Moderne</h1>
+    </header>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#produits">Produits</a>
+        <a href="#plus-demandes">Les Plus Demandés</a>
+        <a href="#ajouter-produit">Ajouter un Produit</a>
+        <a href="#contact">Contact</a>
+        <a href="#commentaires">Commentaires</a>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="accueil">
+        <h2>Bienvenue chez Société Textile Moderne</h2>
+        <p>Votre partenaire pour des textiles de haute qualité.</p>
+    </section>
+
+    <!-- Section Produits -->
+    <section id="produits">
+        <h2>Nos Produits</h2>
+        <div class="produits-grid">
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 1">
+                <h3>Produit 1</h3>
+                <p>Description du produit 1.</p>
+            </div>
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 2">
+                <h3>Produit 2</h3>
+                <p>Description du produit 2.</p>
+            </div>
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 3">
+                <h3>Produit 3</h3>
+                <p>Description du produit 3.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Les Plus Demandés -->
+    <section id="plus-demandes">
+        <h2>Les Plus Demandés</h2>
+        <div class="produits-grid">
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 4">
+                <h3>Produit 4</h3>
+                <p>Description du produit 4.</p>
+            </div>
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 5">
+                <h3>Produit 5</h3>
+                <p>Description du produit 5.</p>
+            </div>
+            <div class="produit">
+                <img src="https://via.placeholder.com/250" alt="Produit 6">
+                <h3>Produit 6</h3>
+                <p>Description du produit 6.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Ajouter un Produit -->
+    <section id="ajouter-produit">
+        <h2>Ajouter un Produit</h2>
+        <form id="produitForm">
+            <label for="nomProduit">Nom du Produit:</label>
+            <input type="text" id="nomProduit" name="nomProduit" required>
+            <label for="descriptionProduit">Description:</label>
+            <textarea id="descriptionProduit" name="descriptionProduit" rows="5" required></textarea>
+            <label for="imageProduit">URL de l'Image:</label>
+            <input type="url" id="imageProduit" name="imageProduit" required>
+            <button type="submit">Ajouter</button>
+        </form>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <form>
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <!-- Section Commentaires -->
+    <section id="commentaires">
+        <h2>Commentaires des Clients</h2>
+        <div class="commentaires-grid">
+            <div class="commentaire">
+                <p>"Les produits sont de haute qualité et le service client est excellent !"</p>
+                <span>- Client Satisfait</span>
+            </div>
+            <div class="commentaire">
+                <p>"Je recommande vivement cette société pour leurs textiles modernes."</p>
+                <span>- Autre Client</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            Chatbot d'Assistance
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-message bot">
+                <p>Bonjour ! Comment puis-je vous aider aujourd'hui ?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Tapez votre message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Société Textile Moderne. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Fonction pour ouvrir/fermer le chatbot
+        function toggleChatbot() {
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            chatbotContainer.style.display = chatbotContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Fonction pour envoyer un message
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            if (message === "") return;
+
+            // Ajouter le message de l'utilisateur
+            const chatbotBody = document.getElementById('chatbotBody');
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chatbot-message user';
+            userMessage.innerHTML = `<p>${message}</p>`;
+            chatbotBody.appendChild(userMessage);
+
+            // Réponse du chatbot
+            const botMessage = document.createElement('div');
+            botMessage.className = 'chatbot-message bot';
+            botMessage.innerHTML = `<p>Merci pour votre message ! Nous vous répondrons bientôt.</p>`;
+            chatbotBody.appendChild(botMessage);
+
+            // Effacer l'input
+            input.value = '';
+
+            // Faire défiler vers le bas
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+
+        // Fonction pour ajouter un produit
+        document.getElementById('produitForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nomProduit = document.getElementById('nomProduit').value;
+            const descriptionProduit = document.getElementById('descriptionProduit').value;
+            const imageProduit = document.getElementById('imageProduit').value;
+
+            const produitGrid = document.querySelector('.produits-grid');
+            const newProduit = document.createElement('div');
+            newProduit.className = 'produit';
+            newProduit.innerHTML = `
+                <img src="${imageProduit}" alt="${nomProduit}">
+                <h3>${nomProduit}</h3>
+                <p>${descriptionProduit}</p>
+            `;
+            produitGrid.appendChild(newProduit);
+
+            // Réinitialiser le formulaire
+            document.getElementById('produitForm').reset();
+        });
+    </script>
+</body>
+</html>
